@@ -46,10 +46,6 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/init.sony.usb.rc:root/init.sony.usb.rc \
     $(COMMON_PATH)/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc
 
-# Sbin
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/sbin/tad_static:system/bin/tad_static
-
 # ANT+
 PRODUCT_PACKAGES += \
     AntHalService \
@@ -101,6 +97,10 @@ PRODUCT_COPY_FILES += \
 # Off mode charger
 PRODUCT_PACKAGES += \
     charger_res_images
+
+# Sensors
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/rootdir/system/etc/sensors_settings:system/etc/sensors_settings
 
 # Audio offload
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -163,6 +163,3 @@ $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/config/config-bc
 
 # HWUI memory limits
 $(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
-
-# Include non-opensource parts
-$(call inherit-product, vendor/sony/shinano-common/shinano-common-vendor.mk)
